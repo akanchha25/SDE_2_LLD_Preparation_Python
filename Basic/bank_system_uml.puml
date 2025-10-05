@@ -1,0 +1,38 @@
+@startuml
+title Bank Account System (OOP - LLD)
+
+abstract class BankAccount {
+    - acc_no : int
+    - holder : str
+    - __balance : float
+    - transaction_history : list
+    + deposit(amount: float)
+    + withdraw(amount: float)*
+    + display_balance()
+    + get_balance() : float
+    + set_balance(amount: float)
+    + show_bank_name()
+}
+
+class SavingsAccount {
+    - MIN_BALANCE : float
+    + withdraw(amount: float)
+}
+
+class CurrentAccount {
+    - OVERDRAFT_LIMIT : float
+    + withdraw(amount: float)
+}
+
+BankAccount <|-- SavingsAccount
+BankAccount <|-- CurrentAccount
+
+note right of BankAccount
+    Demonstrates:
+    - Inheritance
+    - Encapsulation (__balance private)
+    - Abstraction (abstract withdraw)
+    - Polymorphism (overridden withdraw)
+end note
+
+@enduml
